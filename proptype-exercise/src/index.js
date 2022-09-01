@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import PropTypes from "prop-types";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -12,6 +13,13 @@ const AddressLabel = ({ person }) => {
       <h5>{person.address}</h5>
     </>
   );
+};
+
+AddressLabel.propTypes = {
+  person: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+  }),
 };
 
 const Stamp = () => {
@@ -39,6 +47,11 @@ const Envelope = ({ toPerson, fromPerson }) => {
   );
 };
 
+Envelope.propTypes = {
+  toPerson: PropTypes.string.isRequired,
+  fromPerson: PropTypes.string.isRequired,
+};
+
 const CreditCard = ({ cardInfo }) => {
   return (
     <>
@@ -52,6 +65,15 @@ const CreditCard = ({ cardInfo }) => {
   );
 };
 
+CreditCard.propTypes = {
+  cardInfo: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    bankName: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    expDate: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 const Poster = ({ image, title, text }) => {
   return (
     <>
@@ -60,6 +82,12 @@ const Poster = ({ image, title, text }) => {
       <h5>{text}</h5>
     </>
   );
+};
+
+Poster.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 const Email = ({ email }) => {
@@ -73,6 +101,15 @@ const Email = ({ email }) => {
       </div>
     </>
   );
+};
+
+Email.propTypes = {
+  email: PropTypes.shape({
+    sender: PropTypes.string.isRequired,
+    subject: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const App = () => {
