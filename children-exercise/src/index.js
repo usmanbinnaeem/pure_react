@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import PropTypes from "prop-types";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -54,21 +55,37 @@ function Tail({ number, children }) {
   return render;
 }
 
-function Dialog({ Title, Body, Footer }) {
+function Dialog({ children }) {
   return (
     <div className="dialog">
       <div className="dialog-header">
-        <h1>{Title}</h1>
+        <h5>{children[0]}</h5>
       </div>
       <div className="dialog-body">
-        <p>{Body}</p>
+        <h5>{children[1]}</h5>
       </div>
       <div className="dialog-footer">
-        <p>{Footer}</p>
+        <h5>{children[2]}</h5>
       </div>
     </div>
   );
 }
+
+const Body = () => {
+  return <p>I'm Body</p>;
+};
+
+const Title = () => {
+  return <p>I'm Title</p>;
+};
+
+const Footer = () => {
+  return <p>I'm Footer</p>;
+};
+
+Dialog.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]),
+};
 
 const App = () => {
   return (
@@ -99,11 +116,11 @@ const App = () => {
         <h2>Tail! Hello i'm the last element</h2>
         <h2>Tail! Hello i'm the first element</h2>
       </Tail>
-      <Dialog
-        Title={"Hello World"}
-        Body={"This is Dialog body"}
-        Footer={"I'm Footer"}
-      />
+      <Dialog>
+        <Body />
+        <Title />
+        <Footer />
+      </Dialog>
     </>
   );
 };
