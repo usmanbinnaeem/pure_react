@@ -1,36 +1,28 @@
-import React from 'react';
+import {useState, StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-class OneTimeButton extends React.Component {
-  state = {
-    clicked: false
+const OneTimeButton = ({onClick}) => {
+  const [clicked, setClicked] = useState(false)
+  const handleClick = () => {
+    onClick()
+    setClicked(true)
   }
 
-  handleClick = () => {
-    this.props.onClick()
-    this.setState((state) => {
-      return {
-        clicked: true
-      }
-    })
-  }
-
-  render() {
-    return (
-      <button onClick={this.handleClick} disabled={this.state.clicked} >
-        You can only click me once!
-      </button>
-    )
-  }
+  return (
+    <button onClick={handleClick} disabled={clicked}>
+      You can only click me once
+    </button>
+  )
+ 
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <OneTimeButton onClick={() => alert('hi')} />
-  </React.StrictMode>
+  </StrictMode>
 );
 
 reportWebVitals();
