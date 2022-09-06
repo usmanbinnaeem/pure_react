@@ -8,7 +8,7 @@ const LogEffect = () => {
   const [text, setText] = useState('')
 
   useEffect(() => {
-    console.log('latest value', text);
+    // console.log('latest value', text);
   })
 
   return (
@@ -21,7 +21,7 @@ root.render(
   <React.StrictMode>
     <LogEffect />
     <App />
-    <HandleClick />
+    {/* <HandleClick /> */}
   </React.StrictMode>
 );
 
