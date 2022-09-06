@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import ShoppingList from './ShoppingList';
 import Room from './Room';
+import Keypad from './Keypad';
 
 const Counter = () => {
   const [sum, dispatch] = useReducer((state, action) => {
@@ -25,5 +26,7 @@ root.render(
     <ShoppingList />
     <hr />
     <Room />
+    <hr />
+    <Keypad combo = '4453'/>
   </StrictMode>
 );
