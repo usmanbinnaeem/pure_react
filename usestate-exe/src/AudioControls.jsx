@@ -1,36 +1,82 @@
 import { useState } from "react";
 
 const AudioControls = () => {
-  const [volume, setVolume] = useState(89);
-  const [treble, setTreble] = useState(32);
-  const [mid, setMid] = useState(50);
-  const [bass, setBass] = useState(41);
+//   const [volume, setVolume] = useState(89);
+//   const [treble, setTreble] = useState(32);
+//   const [mid, setMid] = useState(50);
+//   const [bass, setBass] = useState(41);
 
-  const decrement = (arg) => {
+  const [handleAudio, setHandleAudio] = useState({
+    volume: 89,
+    bass: 32,
+    mid: 50,
+    treble: 41,
+  });
+
+//   const decrement = (arg) => {
+//     switch (arg) {
+//       case "volume":
+//         return setVolume((volume) => volume - 1);
+//       case "treble":
+//         return setTreble((treble) => treble - 1);
+//       case "mid":
+//         return setMid((mid) => mid - 1);
+//       case "bass":
+//         return setBass((bass) => bass - 1);
+//       default:
+//         return;
+//     }
+//   };
+
+const decrement = (arg) => {
     switch (arg) {
       case "volume":
-        return setVolume((volume) => volume - 1);
+        setHandleAudio((handleAudio) => ({...handleAudio, volume: handleAudio.volume - 1})); 
+        break;
       case "treble":
-        return setTreble((treble) => treble - 1);
+        setHandleAudio((handleAudio) => ({...handleAudio, treble: handleAudio.treble - 1})); 
+        break;
       case "mid":
-        return setMid((mid) => mid - 1);
+        setHandleAudio((handleAudio) => ({...handleAudio, mid: handleAudio.mid - 1})); 
+        break;
       case "bass":
-        return setBass((bass) => bass - 1);
+        setHandleAudio((handleAudio) => ({...handleAudio, bass: handleAudio.bass - 1})); 
+        break;
       default:
         return;
     }
   };
 
-  const increment = (arg) => {
+
+//   const increment = (arg) => {
+//     switch (arg) {
+//       case "volume":
+//         return setVolume((volume) => volume + 1);
+//       case "treble":
+//         return setTreble((treble) => treble + 1);
+//       case "mid":
+//         return setMid((mid) => mid + 1);
+//       case "bass":
+//         return setBass((bass) => bass + 1);
+//       default:
+//         return;
+//     }
+//   };
+
+const increment = (arg) => {
     switch (arg) {
       case "volume":
-        return setVolume((volume) => volume + 1);
+        setHandleAudio((handleAudio) => ({...handleAudio, volume: handleAudio.volume + 1})); 
+        break;
       case "treble":
-        return setTreble((treble) => treble + 1);
+        setHandleAudio((handleAudio) => ({...handleAudio, treble: handleAudio.treble + 1})); 
+        break;
       case "mid":
-        return setMid((mid) => mid + 1);
+        setHandleAudio((handleAudio) => ({...handleAudio, mid: handleAudio.mid + 1})); 
+        break;
       case "bass":
-        return setBass((bass) => bass + 1);
+        setHandleAudio((handleAudio) => ({...handleAudio, bass: handleAudio.bass + 1})); 
+        break;
       default:
         return;
     }
@@ -50,7 +96,7 @@ const AudioControls = () => {
         >
           -
         </span>
-        {volume}
+        {handleAudio.volume}
         <span
           onClick={() => increment("volume")}
           style={{
@@ -76,7 +122,7 @@ const AudioControls = () => {
         >
           -
         </span>
-        {treble}
+        {handleAudio.treble}
         <span
           onClick={() => increment("treble")}
           style={{
@@ -102,7 +148,7 @@ const AudioControls = () => {
         >
           -
         </span>
-        {mid}
+        {handleAudio.mid}
         <span
           onClick={() => increment("mid")}
           style={{
@@ -128,7 +174,7 @@ const AudioControls = () => {
         >
           -
         </span>
-        {bass}
+        {handleAudio.bass}
         <span
           onClick={() => increment("bass")}
           style={{
